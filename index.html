@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up - Game Designer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #6a0dad; /* A deep, rich purple */
+            --secondary-color: #ffc107; /* A bright, energetic gold */
+            --accent-color: #ff6f61; /* A lively coral */
+            --background-dark: #1a1a2e; /* A dark, modern blue-purple */
+            --background-light: #f0f4f8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle, #2c0a4c 0%, #1a1a2e 100%);
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure the link covers the whole card and inherits styles */
+        .project-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .vibrant-btn {
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .vibrant-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(255, 107, 97, 0.4);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @media (min-width: 768px) {
+            .hero-text {
+                animation: slideInLeft 1s ease-out;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+
+    <!-- Header & Navigation -->
+    <header class="p-6 md:p-8 flex items-center justify-between z-50 relative">
+        <div class="text-2xl font-bold tracking-wider text-white">
+            Warlord games 
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#about" class="text-white hover:text-secondary-color transition-colors">About</a>
+            <a href="#projects" class="text-white hover:text-secondary-color transition-colors">Projects</a>
+            <a href="#contact" class="text-white hover:text-secondary-color transition-colors">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 z-40 hidden md:hidden">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+        <a href="#about" class="text-4xl font-bold text-white hover:text-secondary-color transition-colors" onclick="hideMobileMenu()">About</a>
+        <a href="#projects" class="text-4xl font-bold text-white hover:text-secondary-color transition-colors" onclick="hideMobileMenu()">Projects</a>
+        <a href="#contact" class="text-4xl font-bold text-white hover:text-secondary-color transition-colors" onclick="hideMobileMenu()">Contact</a>
+    </div>
+
+    <main class="container mx-auto px-4 md:px-8">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative flex flex-col items-center text-center py-20 md:py-32">
+            <div class="z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold hero-text leading-tight text-white mb-4">
+                    Building Worlds, <span class="text-secondary-color">One Level at a Time.</span>
+                </h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-300">
+                    Hello, I'm Melvin Mathew, a passionate game designer dedicated to creating immersive and memorable player experiences.
+                </p>
+                <div class="mt-8 space-x-4">
+                    <a href="#projects" class="vibrant-btn text-white px-8 py-3 rounded-full font-semibold shadow-lg">View My Work</a>
+                    <a href="#contact" class="border border-secondary-color text-secondary-color px-8 py-3 rounded-full font-semibold hover:bg-secondary-color hover:text-background-dark transition-colors">Get in Touch</a>
+                </div>
+            </div>
+            <!-- Decorative floating elements -->
+            <div class="absolute top-1/4 left-1/4 w-20 h-20 rounded-full bg-accent-color opacity-30 floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-16 h-16 rounded-lg bg-secondary-color opacity-30 floating-element" style="animation-delay: 1s;"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary-color">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <img src="assets\images\My PIc.jpg" alt="Melvin Mathew's portrait" class="rounded-full shadow-2xl border-4 border-accent-color transform hover:scale-105 transition-transform duration-300 mx-auto">
+                </div>
+                <div class="md:w-2/3 max-w-2xl text-lg leading-relaxed text-gray-300">
+                    <p class="mb-4">
+                        I specialize in Narrative design, level design.Turning abstract concepts into concrete, playable realities. My goal is to forge meaningful connections between players and the worlds they explore, whether through the thrill of a challenge or the emotional depth of a story.
+                    </p>
+                    <p>
+                        With a solid foundation in both creative and technical principles, I'm adept at collaborating with artists, programmers, and other designers to bring ambitious visions to life. Let's build something amazing together!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-accent-color">Projects</h2>
+            
+            <!-- Project Filter Buttons -->
+            <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-8">
+                <button class="filter-btn text-white border-2 border-secondary-color px-4 py-2 rounded-full font-semibold hover:bg-secondary-color hover:text-background-dark transition-colors active-filter" data-filter="all">All</button>
+                <button class="filter-btn text-white border-2 border-secondary-color px-4 py-2 rounded-full font-semibold hover:bg-secondary-color hover:text-background-dark transition-colors" data-filter="level-design">Level Design</button>
+                <button class="filter-btn text-white border-2 border-secondary-color px-4 py-2 rounded-full font-semibold hover:bg-secondary-color hover:text-background-dark transition-colors" data-filter="narrative">Narrative Design</button>
+                <button class="filter-btn text-white border-2 border-secondary-color px-4 py-2 rounded-full font-semibold hover:bg-secondary-color hover:text-background-dark transition-colors" data-filter="design">Game Design</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="project-card p-6 rounded-3xl shadow-lg" data-category="level-design">
+                    <a href="https://youtu.be/-MBUoCEyQHw" target="_blank">
+                        <img src="assets\images\Namma Slice.png" alt="Namma Slice" class="rounded-2xl mb-4 w-full">
+                        <h3 class="text-2xl font-bold text-secondary-color mb-2">Namma Slice</h3>
+                        <p class="text-gray-400 mb-4">In a fast-paced city, you're not just delivering pizzas—you're racing against time, chaos, and gravity...</p>
+                        <span class="inline-block px-3 py-1 bg-primary-color text-white text-xs rounded-full">Game Designer</span>
+                    </a>
+                </div>
+                
+                <div class="project-card p-6 rounded-3xl shadow-lg" data-category="narrative">
+                    <a href="https://youtu.be/yGiHhqA81OA" target="_blank">
+                        <img src="./assets/images/DetectiAI.png" alt="DetectiAI" class="rounded-2xl mb-4 w-full">
+                        <h3 class="text-2xl font-bold text-secondary-color mb-2">DetectiAI</h3>
+                        <p class="text-gray-400 mb-4">Protagonist is a private investigator who is solving a murder mystery where he uses AI technology...</p>
+                        <span class="inline-block px-3 py-1 bg-primary-color text-white text-xs rounded-full">Narrative Design/Level Designer</span>
+                    </a>
+                </div>
+                
+                <div class="project-card p-6 rounded-3xl shadow-lg" data-category="design">
+                    <a href="https://youtu.be/lbKc7JFSVwk" target="_blank">
+                        <img src="assets\images\GRC.png" alt="Global Rescue Corp" class="rounded-2xl mb-4 w-full">
+                        <h3 class="text-2xl font-bold text-secondary-color mb-2">Global Rescue Corp</h3>
+                        <p class="text-gray-400 mb-4">Command a global or regional disaster response organization. Respond to earthquakes, floods, epidemics, or conflict zones.</p>
+                        <span class="inline-block px-3 py-1 bg-primary-color text-white text-xs rounded-full">Game Designer/Level Designer</span>
+                    </a>
+                </div>
+                
+
+                <div class="project-card p-6 rounded-3xl shadow-lg" data-category="narrative">
+                    <a href="https://youtube.com/watch?v=wrath-grace-video" target="_blank">
+                        <img src="assets\images\Wrath & Grace Poster.png" alt="Wrath & Grace" class="rounded-2xl mb-4 w-full">
+                        <h3 class="text-2xl font-bold text-secondary-color mb-2">Wrath & Grace(Board Game)</h3>
+                        <p class="text-gray-400 mb-4">Board Game:Players are adventurers seeking treasure in an ancient land where every action has a boon (reward) or a bane (consequence). </p>
+                        <span class="inline-block px-3 py-1 bg-primary-color text-white text-xs rounded-full">Game Designer</span>
+                    </a>
+                </div>
+                
+                <div class="project-card p-6 rounded-3xl shadow-lg" data-category="Something">
+                    <a href="https://youtu.be/xkJJSpDtnPc" target="_blank">
+                        <img src="assets\images\BYOB poster.png" alt="BYOB: Bring your own bag" class="rounded-2xl mb-4 w-full">
+                        <h3 class="text-2xl font-bold text-secondary-color mb-2">BYOB: Bring your own bag</h3>
+                        <p class="text-gray-400 mb-4">Bring Your Own Bag Simulator is a mechanics-driven casual simulation game designed to raise awareness about eco-friendly practices...</p>
+                        <span class="inline-block px-3 py-1 bg-primary-color text-white text-xs rounded-full">Game Designer/ Technical Artist</span>
+                    </a>
+                </div>
+            
+                <div class="project-card p-6 rounded-3xl shadow-lg" data-category="Something">
+                    <a href="https://youtu.be/6IXNKFCg1s8" target="_blank">
+                        <img src="assets\images\image.png" alt="BYOB: Bring your own bag" class="rounded-2xl mb-4 w-full">
+                        <h3 class="text-2xl font-bold text-secondary-color mb-2">Crumbs Of Survival</h3>
+                        <p class="text-gray-400 mb-4">Crumbs of survival is a quirky action-adventure game where players hunt and capture zombies in a lighthearted, post-apocalyptic world. Armed with guns we have to lure zombies out of hiding, snag them, and then use them as ingredients to create bizarre cookies. These cookies are sold to eager customers, generating coins to upgrade your gear, expand your production, and unlock new maps filled with unique zombie types. Blending action, resource management, and humor, the game turns zombie hunting into a fun and addictive cookie-making business venture.</p>
+                        <span class="inline-block px-3 py-1 bg-primary-color text-white text-xs rounded-full">Game Designer/Level Designer</span>
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-secondary-color">Let's Connect</h2>
+            <p class="text-lg max-w-2xl mx-auto text-gray-300 mb-8">
+                Have a project in mind or just want to talk about games? I'd love to hear from you.
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mathewmelvin101@gmail.com" class="text-white hover:text-accent-color transition-colors">
+                    <svg class="w-8 h-8 md:w-10 md:h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                </a>
+                <a href="#" class="text-white hover:text-accent-color transition-colors">
+                    <svg class="w-8 h-8 md:w-10 md:h-10" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.632 7.854 6.31 9.255.46.086.634-.2.634-.442v-1.54c-2.585.565-3.136-1.25-3.136-1.25-.42-.998-1.02-1.264-1.02-1.264-.834-.57.06-.558.06-.558.918.065 1.4.945 1.4.945.816 1.393 2.137.99 2.656.758.085-.59.32-.99.585-1.218-2.023-.23-4.145-1.01-4.145-4.502 0-1.002.355-1.82.94-2.457-.095-.23-.408-1.16.09-2.423 0 0 .768-.246 2.508.94.73-.203 1.5-.304 2.27-.308.77.004 1.54.105 2.27.308 1.74-1.186 2.508-.94 2.508-.94.498 1.263.185 2.193.09 2.423.585.637.94 1.455.94 2.457 0 3.493-2.122 4.272-4.15 4.502.327.28.618.83.618 1.67v2.463c0 .242.174.528.638.44A10.002 10.002 0 0022 12c0-5.523-4.477-10-10-10z"></path></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 text-gray-400 border-t border-gray-700 mt-12">
+        <p>&copy; 2025 Melvin Mathew. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+
+            closeMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+            
+            window.hideMobileMenu = () => {
+                 mobileMenu.classList.add('hidden');
+            };
+
+            // Project filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and add to the clicked one
+                    filterButtons.forEach(btn => btn.classList.remove('active-filter', 'bg-secondary-color', 'text-background-dark'));
+                    button.classList.add('active-filter', 'bg-secondary-color', 'text-background-dark');
+                    
+                    const filter = button.dataset.filter;
+                    projectCards.forEach(card => {
+                        const category = card.dataset.category;
+                        if (filter === 'all' || filter === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
